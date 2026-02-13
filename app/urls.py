@@ -22,5 +22,5 @@ urlpatterns = [
 
     path('api/', include('vacinacao.urls')),
 
-    path('auth/', include('usuarios.urls'))
+    path('api-auth/', include('rest_framework.urls')),
 ]

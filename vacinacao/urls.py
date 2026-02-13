@@ -2,7 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import UsuarioViewSet, PetViewSet, VacinaViewSet, RegistroVacinacaoViewSet
 
-# O Router cria as URLs automaticamente (/pets/, /pets/1/, etc)
+#router associa o Url a um conjunto de visões gerando rotas padrão da API GPPD
 router = DefaultRouter()
 router.register(r'usuarios', UsuarioViewSet)
 router.register(r'pets', PetViewSet)
