@@ -6,8 +6,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
 
-        fields = ['id', 'username', 'email', 'celular', 'password']
-
+        fields = ['id', 'username', 'email', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
@@ -16,6 +15,18 @@ class UsuarioSerializer(serializers.ModelSerializer):
 
 
 class PetSerializer(serializers.ModelSerializer):
+    especie_extenso = serializers.CharField(
+        source='get_especie_display', read_only=True)
+    raca_nome = serializers.CharField(source='raca.nome', read_only=True)
+    dono_nome = serializers.CharField(source='dono.username', read_only=True)
+
+    class Meta:
+        model = Pet
+        fields = ('id', 'nome', 'especie', 'especie_extenso', 'raca',
+                  'raca_nome', 'data_nascimento', 'dono', 'dono_nome')
+
+
+class PetAdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pet
         fields = '__all__'
