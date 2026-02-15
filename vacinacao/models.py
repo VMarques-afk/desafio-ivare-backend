@@ -18,6 +18,9 @@ class Raca(models.Model):
         ('outro', 'Outro'),
     ]
 
+    def __str__(self):
+        return f"{self.nome}({self.get_especie_display()})"
+
     nome = models.CharField(max_length=100, verbose_name="Nome da raça")
     especie = models.CharField(
         max_length=20, choices=ESPECIE_CHOICES, verbose_name="Espécie")

@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Veterinario
+from .serializers import VeterinarioSerializer
 
-# Create your views here.
+class VeterinarioViewSet(viewsets.ModelViewSet):
+    queryset = Veterinario.objects.all()
+    serializer_class = VeterinarioSerializer

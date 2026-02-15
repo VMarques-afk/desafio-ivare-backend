@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'django_filters',
+    'drf_spectacular',
     'vacinacao',
     'veterinarios',
 ]
@@ -56,6 +57,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'app.urls'
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
     'DEFAULT_PERMISSION_CLASSES': [
@@ -65,6 +67,13 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'API de Vacinação Pet',
+    'DESCRIPTION': 'Sistema para controle de vacinas e pets',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 TEMPLATES = [

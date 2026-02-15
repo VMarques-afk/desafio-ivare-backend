@@ -3,10 +3,12 @@ from django.conf import settings
 
 
 class Veterinario(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='Perfil_veterinario'
+        related_name='Perfil_veterinario',
+        null=True,
+        blank=True
     )
     nome = models.CharField(max_length=150, verbose_name="Nome", blank=True)
     sobrenome = models.CharField(
